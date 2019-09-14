@@ -1,2 +1,3 @@
-# calss_matrix_and_clusters
+# Métodos Matriciais e Análise de Clusters
+
 Projeto destinado a armazenar meus entregáveis para a disciplina de métodos matriciais e analise de clusters.
