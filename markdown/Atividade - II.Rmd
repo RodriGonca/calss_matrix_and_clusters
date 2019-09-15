@@ -1,0 +1,26 @@
+---
+title: "Métodos Matriciais e Análise de Clusters - Atividade Individual - II"
+---
+
+```{r setup_exploration, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.pos =  "h")
+knitr::opts_knit$set(root.dir = "../")
+
+# loading required libraries
+
+
+
+```
+
+```{r scripts_exploration, include=FALSE}
+# loading required steps before performing the analysis
+
+
+```
+
+# Descrição da Atividade
+
+**Tema:** Tema.
+
+# Atividades

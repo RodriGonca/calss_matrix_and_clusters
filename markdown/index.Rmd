@@ -1,3 +1,7 @@
+---
+title: 'FGV MBA: Business Analytics & Big Data'
+---
+
 # Métodos Matriciais e Análise de Clusters
 
 Projeto destinado a armazenar meus entregáveis para a disciplina de métodos matriciais e analise de clusters.
@@ -5,7 +9,7 @@ Projeto destinado a armazenar meus entregáveis para a disciplina de métodos ma
 ## Professor
 - Rodrigo Togneri
 
-## Students / ID (matrícula)
+## Aluno / ID (matrícula)
 
 - [Rodrigo Goncalves](mailto:rodrigo.goncalves@me.com) / A57566093
 

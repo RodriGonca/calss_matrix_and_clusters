@@ -1,0 +1,24 @@
+name: "Matrix-and-Clusters"
+navbar:
+  title: "FGV MBA"
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Atividades"
+      icon: fa-hand-holding-usd
+      menu:
+        - text: "Atividade - I"
+          href: 01_about_the_data.html
+        - text: "Atividade - II"
+          href: 02_data_preparation.html
+        - text: "Atividade - III"
+          href: 03_exploration_report.html
+        - text: "Atividade - IV"
+          href: 03_exploration_report.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    number_sections: no
+    toc: yes

@@ -1,0 +1,133 @@
+---
+title: "Métodos Matriciais e Análise de Clusters - Atividade Individual - I"
+---
+
+```{r setup_exploration, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.pos =  "h")
+knitr::opts_knit$set(root.dir = "../")
+
+# loading required libraries
+library(rmarkdown)
+library(dplyr)
+library(knitr)
+```
+
+```{r scripts_exploration, include=FALSE}
+# loading required steps before performing the analysis
+
+
+```
+
+# Descrição da Atividade
+
+**Tema:** Cadeias de Markov.
+
+Em um dado e-commerce, a matriz de transição para uma dada operação é a representada abaixo:
+
+|             | Site | Hotpage  | Call Center | Venda | Saída |
+| ----------- | ---- | -------- | ----------- | ----- | ----- |
+| Site        | 0.00 | 0.10     | 0.10        | 0.20  | 0.60  |
+| Hotpage     | 0.15 | 0.00     | 0.05        | 0.35  | 0.45  |
+| Call Center | 0.20 | 0.10     | 0.00        | 0.13  | 0.57  |
+| Venda       | 0.00 | 0.00     | 0.00        | 1.00  | 0.00  |
+| Saída       | 0.00 | 0.00     | 0.00        | 0.00  | 1.00  |
+
+# Atividades
+
+### a) Com base nela, se existe um cliente que inicia sua interação pela Hotpage, qual a probabilidade de ele estar no Site, na Hotpage, no Call Center, ter resultado em Venda e ter dado Saída no passo seguinte? E no passo logo em seguida?
+
+```{r atividade_a, echo=TRUE, out.width = '100%'}
+
+library(markovchain)
+
+tm <- matrix(c(0.00, 0.10, 0.10, 0.20, 0.60,
+               0.15, 0.00, 0.05, 0.35, 0.45,
+               0.20, 0.10, 0.00, 0.13, 0.57,
+               0.00, 0.00, 0.00, 1.00, 0.00,
+               0.00, 0.00, 0.00, 0.00, 1.00),
+              nrow = 5,
+              byrow = TRUE) 
+tm
+
+dtmc <- new("markovchain", 
+            transitionMatrix = tm,
+            states = c("Site", "Hotpage", "Call Center", "Venda", 'Saida'),
+            name = "MarkovChain para o e-commerce") 
+dtmc
+
+initialState <- c(0, 1, 0, 0, 0)
+steps <- 1
+finalState <- initialState * (dtmc ^ steps) #using power operator
+kable(finalState)
+
+initialState <- c(0, 1, 0, 0, 0)
+steps <- 2
+finalState <- initialState * (dtmc ^ steps) #using power operator
+kable(finalState)
+
+kable(steadyStates(dtmc))
+
+plot(dtmc, edge.arrow.size = 1)
+
+
+library('heemod')
+library('diagram')
+
+mat_dim <- define_transition(
+state_names = c("Site", "Hotpage", "Call Center", "Venda", 'Saida'),
+                0.00, 0.10, 0.10, 0.20, 0.60,
+                0.15, 0.00, 0.05, 0.35, 0.45,
+                0.20, 0.10, 0.00, 0.13, 0.57,
+                0.00, 0.00, 0.00, 1.00, 0.00,
+                0.00, 0.00, 0.00, 0.00, 1.00)
+plot(mat_dim)
+
+```
+
+### b) Use o software para calcular qual a probabilidade de venda final (isto é, na condição de estabilidade) de um cliente que interagiu pela primeira vez com a empresa usando:
+
+Coloque aqui apenas o resultado.
+
+-**i.	O Site.**
+```{r atividade_b1, echo=TRUE, out.width = '100%'}
+initialState <- c(1, 0, 0, 0, 0)
+steps <- 1000
+finalState <- initialState * (dtmc ^ steps) #using power operator
+kable(finalState)
+```
+
+-**ii.	A Hotpage.**
+```{r atividade_b2, echo=TRUE, out.width = '100%'}
+initialState <- c(0, 1, 0, 0, 0)
+steps <- 1000
+finalState <- initialState * (dtmc ^ steps) #using power operator
+kable(finalState)
+```
+
+-**iii.	O Call Center.**
+```{r atividade_b3, echo=TRUE, out.width = '100%'}
+initialState <- c(0, 0, 1, 0, 0)
+steps <- 1000
+finalState <- initialState * (dtmc ^ steps) #using power operator
+kable(finalState)
+```
+
+
+### c) De acordo com o resultado de b), qual o melhor “canal de entrada”: Site, Hotpage ou Call Center? Justifique.
+
+O melhor canal de entrada é a hotpage pois tem a maior taxa de conversão em vendas **40%**
+
+```{r atividade_c, echo=TRUE, out.width = '100%'}
+
+```
+
+### d) Caso 50% dos clientes sejam “originados” por procura orgânica no Site, 20% pela Hotpage e 30% pelo Call Center, qual seria a taxa de conversão assintótica final?
+
+```{r atividade_d, echo=TRUE, out.width = '100%'}
+
+initialState <- c(0.5, 0.2, 0.3, 0, 0)
+steps <- 1000
+finalState <- initialState * (dtmc ^ steps) #using power operator
+kable(finalState)
+```
