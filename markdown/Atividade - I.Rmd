@@ -75,7 +75,7 @@ plot(mkv_chain, edge.arrow.size = 0.5)
 
 ```
 
-Para responder as próximas questões vou utilizar uma funcão customizada a partie do pacote marcokchain e ggplot para recuperar o historico de transição entre os estados em cada período e desenhar algumas visualizações destes dados.
+Para responder as próximas questões vou utilizar uma função customizada a parte do pacote marcokchain e ggplot para recuperar o histórico de transição entre os estados em cada período e desenhar algumas visualizações destes dados.
 
 ```{r funcao, echo=TRUE, out.width = '100%', message=FALSE}
 
