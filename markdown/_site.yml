@@ -9,13 +9,13 @@ navbar:
       icon: fa-hand-holding-usd
       menu:
         - text: "Atividade - I"
-          href: 01_about_the_data.html
+          href: Atividade---I.html
         - text: "Atividade - II"
-          href: 02_data_preparation.html
+          href: Atividade---II.html
         - text: "Atividade - III"
-          href: 03_exploration_report.html
+          href: Atividade---III.html
         - text: "Atividade - IV"
-          href: 03_exploration_report.html
+          href: Atividade---IV.html
 output:
   html_document:
     theme: cosmo
